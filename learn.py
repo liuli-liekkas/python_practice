@@ -1,1 +1,0 @@
-from functools import reducebigmuls = lambda xs,ys: filter(lambda x,y:x*y > 25, combine(xs,ys))combine = lambda xs,ys: map(None, xs*len(ys), dupelms(ys,len(xs)))dupelms = lambda lst,num: reduce(lambda s,t:s+t, map(lambda l,n=num: [l]*n, lst))print(bigmuls([1,2,3,4],[10,15,3,22]))

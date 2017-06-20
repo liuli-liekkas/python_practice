@@ -23,7 +23,7 @@ class Watcher(FileSystemEventHandler):
             self.fd.seek(self.offset, 0)
             match = getattr(self.matcher, 'match', lambda x: False)
             for line in self.fd:
-                line = line.retrip('\n')
+                line = line.rstrip('\n')
                 if match(line):
                     print('matched {0}'.format(line))
             self.offset = self.fd.tell()
@@ -53,5 +53,11 @@ class Watcher(FileSystemEventHandler):
 if __name__ == '__main__':
     import sys
     class Matcher:
-        def
-    w = Watcher(sys.argv[1], )
+        def match(self, line):
+            return True
+    w = Watcher(sys.argv[1], Matcher())
+
+    try:
+        w.start()
+    except KeyboardInterrupt:
+        w.stop()
